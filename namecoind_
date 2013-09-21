@@ -109,9 +109,9 @@ def main():
         info['confirmed'] = len(info['tx'])
 
     if request_var in ('fees', 'transactions'):
-        (memory_pool, error) = namecoin.getrawmempool()
+        (memory_pool, error) = namecoin.getmemorypool()
         if memory_pool:
-            info['waiting'] = len(memory_pool)
+            info['waiting'] = len(memory_pool['transactions'])
 
     if command == 'autoconf':
         print 'yes'
