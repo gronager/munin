@@ -104,7 +104,7 @@ def main():
             raise ValueError("Could not connect to Namecoin server.")
 
     if request_var in ('transactions', 'block_age'):
-        (info, error) = namecoin.getblockhash(info['blocks'])
+        (info, error) = namecoin.getblockbycount(info['blocks'])
         (info, error) = namecoin.getblock(info)
         info['block_age'] = int(time.time()) - info['time']
         info['confirmed'] = len(info['tx'])
