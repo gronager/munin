@@ -210,8 +210,8 @@ class Proxy(object):
             }
         request = urllib2.Request(self.service.url, json.dumps(data))
         if self.service.username:
-            # Strip the newline from the b64 encoding!
-            b64 = ('%s:%s' % (self.service.username, self.service.password)).encode('base64')[:-1]
+            # Strip the newlines from the b64 encoding!
+            b64 = ('%s:%s' % (self.service.username, self.service.password)).encode('base64').replace('\n','')
             request.add_header('Authorization', 'Basic %s' % b64)
 
         try:
